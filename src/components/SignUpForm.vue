@@ -15,6 +15,8 @@
   <script>
   import axios from 'axios'
 
+  const backend = '/api';
+
   export default {
     data() {
       return {
@@ -31,7 +33,7 @@
     methods: {
       async signup() {
         try {
-            const response = await axios.post('http://localhost:8080/user/signup', this.form)
+            const response = await axios.post(`${backend}/user/signup`, this.form)
             this.$router.push({
                 name: 'Welcome',
                 query: {

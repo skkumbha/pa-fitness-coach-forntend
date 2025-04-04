@@ -50,6 +50,9 @@
   <script>
 
 import axios from 'axios'
+
+const backend = process.env.VUE_APP_BACKEND_URL || 'http://localhost:8080'
+
   
 export default {
     data() {
@@ -90,7 +93,7 @@ export default {
           this.addStatusMessage("Submitting your answers to the backend...");
           
           // Make a backend call to submit the answers
-          const response = await axios.post(`http://localhost:8080/api/v1/${this.userName}/assistant`, 
+          const response = await axios.post(`${backend}/api/v1/${this.userName}/assistant`, 
           // Send the answers to the backend
           {
             answers: this.answers,

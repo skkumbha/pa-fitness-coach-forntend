@@ -23,6 +23,8 @@
   
   <script>
   import axios from "axios";
+
+  const backend = '/api'; // Set the backend URL
   
   export default {
     data() {
@@ -43,7 +45,7 @@
     methods: {
       async fetchMessages() {
         try {
-          const response = await axios.get(`http://localhost:8080/api/v1/${this.userName}/messages`);
+          const response = await axios.get(`${backend}/v1/${this.userName}/messages`);
           console.log("Messages Response is " + JSON.stringify(response.data, null, 2));
           this.messages = Array.isArray(response.data.data) ? response.data.data : []; // Assign the fetched messages to the `messages` array
         } catch (error) {
@@ -79,7 +81,7 @@
   
           try {
             // Send the user's message to the backend
-            const response = await axios.post(`http://localhost:8080/api/v1/${this.userName}/messages`, {
+            const response = await axios.post(`${backend}/v1/${this.userName}/messages`, {
               text: userMessage,
             });
   
